@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -7,6 +8,8 @@
   --color-accent: #9a031e;
   --color-positive: #4a5759;
   --color-negative: #edafb8;
+
+  --font-cedarville: "Cedarville Cursive";
 }
 
 body {

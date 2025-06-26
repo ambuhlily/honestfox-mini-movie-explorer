@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-function SearchBar({onSearch, initialQuery}) {
+const SearchBar = ({onSearch, initialQuery}) => {
   const [query, setQuery] = useState(initialQuery || '');
 
   useEffect(() => {
@@ -19,10 +19,10 @@ function SearchBar({onSearch, initialQuery}) {
         type="text"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search for movies"
-        className="p-2 rounded-l-md border border-black w-full text-black"
+        placeholder="Find movies..."
+        className="p-2 rounded-l-md border border-accent w-full text-black"
       />
-      <button type="submit" className="bg-blue-500 px-4 py-2 text-white rounded-r-md">
+      <button type="submit" className="bg-accent px-4 py-2 text-white rounded-r-md cursor-pointer">
         Search
       </button>
     </form>
