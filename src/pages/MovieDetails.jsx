@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useFavourites } from '../contexts/FavouritesContext.jsx';
+import { toast } from 'react-hot-toast';
 const apiKey = "adf1f2d7";
 const omdbapiUrl = "http://www.omdbapi.com/";
 
@@ -10,16 +11,25 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { addToFavourites, removeFromFavourites, isFavourite } = useFavourites();
 
+  // fetch movie details
   useEffect(() => {
     fetch(`${omdbapiUrl}?i=${id}&apikey=${apiKey}`)
       .then((res) => res.json())
       .then((data) => setMovie(data));
   }, [id]);
 
+  // toggle favourite status and show toast notif
   const toggleFavourite = () => {
-    isFavourite(movie.imdbID) ? removeFromFavourites(movie.imdbID) : addToFavourites(movie);
+    if (isFavourite(movie.imdbID)) {
+      removeFromFavourites(movie.imdbID);
+      toast.error(`${movie.Title} removed from favourites!`);
+    } else {
+      addToFavourites(movie);
+      toast.success(`${movie.Title} added to favourites!`);
+    }
   };
 
+  // load state
   if (!movie) return <p>Loading...</p>;
 
   return (
