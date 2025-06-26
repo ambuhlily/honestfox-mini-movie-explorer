@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 const MovieCard = ({ movie }) => {
   return (
     <Link
-    to={`/movie/${movie.imdbID}`}
-    className="bg-secondary rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105"
+      to={`/movie/${movie.imdbID}`}
+      className="bg-secondary rounded-lg overflow-hidden shadow-md hover:shadow-lg
+      transition transform hover:scale-105"
     >
       <img
         src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/300x450?text=No+Image'}
@@ -19,6 +20,7 @@ const MovieCard = ({ movie }) => {
     </Link>
   );
 }
+
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     imdbID: PropTypes.string.isRequired,

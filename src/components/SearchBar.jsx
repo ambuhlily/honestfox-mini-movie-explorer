@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const SearchBar = ({onSearch, initialQuery}) => {
   const [query, setQuery] = useState(initialQuery || '');
 
+  // sets initialquery for search continuity
   useEffect(() => {
     initialQuery && onSearch(initialQuery);
   }, []);
@@ -11,6 +12,7 @@ const SearchBar = ({onSearch, initialQuery}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     query && onSearch(query);
+    setQuery('');
   };
 
   return (

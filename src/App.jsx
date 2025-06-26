@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
+import Favourites from './pages/Favourites';
 import Home from './pages/Home';
 import MovieDetails from './pages/MovieDetails';
-import Favourites from './pages/Favourites';
 
 function App() {
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
