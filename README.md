@@ -9,7 +9,9 @@ Currently, two official plugins are available:
 
 🚀 Setup Instructions
 npm install
+
 npm run dev
+
 The app should be running at:
 http://localhost:5173
 
