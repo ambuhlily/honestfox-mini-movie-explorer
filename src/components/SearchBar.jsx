@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-function SearchBar({onSearch}) {
-  const [query, setQuery] = useState('');
+function SearchBar({onSearch, initialQuery}) {
+  const [query, setQuery] = useState(initialQuery || '');
+
+  useEffect(() => {
+    initialQuery && onSearch(initialQuery);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +31,7 @@ function SearchBar({onSearch}) {
 
 SearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  initialQuery: PropTypes.string,
 };
 
 export default SearchBar;

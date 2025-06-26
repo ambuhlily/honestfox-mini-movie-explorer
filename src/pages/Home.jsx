@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useSearch } from '../contexts/SearchContext';
 import SearchBar from '../components/SearchBar';
 import MovieCard from '../components/MovieCard';
 const omdbapiUrl = "http://www.omdbapi.com/";
 const apiKey = "adf1f2d7";
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const { query, setQuery, movies, setMovies } = useSearch();
 
   const searchMovies = async (title) => {
     fetch(`${omdbapiUrl}?s=${title}&apikey=${apiKey}`)
       .then(response => response.json())
       .then(data => setMovies(data.Search) || []);
+      setQuery(title);
   };
 
   return (
@@ -21,7 +22,7 @@ const Home = () => {
       </h1>
 
       <div className="p-4">
-        <SearchBar onSearch={searchMovies} />
+        <SearchBar onSearch={searchMovies} initialQuery={query}/>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4">
           {movies.map((movie) => (
             <MovieCard key={movie.imdbID} movie={movie} />
