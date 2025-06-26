@@ -1,15 +1,16 @@
-
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import MovieDetails from './pages/MovieDetails';
+import Favourites from './pages/Favourites';
 
 function App() {
-
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-green-200">
-      <h1 className="text-3xl font-bold text-gray-800">Tailwind is working!</h1>
-    </div>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/movie/:id" element={<MovieDetails />} />
+      <Route path="/favourites" element={<Favourites />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
