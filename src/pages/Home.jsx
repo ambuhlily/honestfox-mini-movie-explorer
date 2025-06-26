@@ -15,6 +15,16 @@ const Home = () => {
       setQuery(title);
   };
 
+  if (!movies || movies.length === 0 && query) {
+    return (
+      <div className="p-4">
+        <h1 className="text-2xl font-bold">Mini Movie Explorer</h1>
+        <SearchBar onSearch={searchMovies} initialQuery={query}/>
+        <p className="mt-4 text-gray-500">No movies found. Please search something else.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold">
